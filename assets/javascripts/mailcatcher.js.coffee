@@ -45,14 +45,13 @@ class MailCatcher
 
     $("nav.app .clear a").on "click", (e) =>
       e.preventDefault()
-      if confirm "You will lose all your received messages.\n\nAre you sure you want to clear all messages?"
-        $.ajax
-          url: new URL("messages", document.baseURI).toString()
-          type: "DELETE"
-          success: =>
-            @clearMessages()
-          error: ->
-            alert "Error while clearing all messages."
+      $.ajax
+        url: new URL("messages", document.baseURI).toString()
+        type: "DELETE"
+        success: =>
+          @clearMessages()
+        error: ->
+          alert "Error while clearing all messages."
 
     $("nav.app .quit a").on "click", (e) =>
       e.preventDefault()
